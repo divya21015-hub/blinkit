@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blinkit Clone</title>
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: -apple-system, sans-serif;
+}
+body{
+    background:#f5f5f5;
+}
+/* HEADER - Blinkit is white with bottom border */
+header{
+    background:white;
+    display:flex; 
+    align-items:center; 
+    justify-content:space-between;
+    padding:0 20px; 
+    height:86px;
+     border-bottom:1px solid #eee;
+    position:sticky; 
+    top:0; 
+    z-index:10;
+}
+.logo{
+    color:#ffcc00; 
+    font-size:32px; 
+    font-weight:900; 
+    line-height:0.9;
+}
+.logo span{
+    color:black; 
+    display:block; 
+    font-size:18px; 
+    font-weight:700;
+}
+.delivery{
+    border-left:1px solid #eee; 
+    padding-left:20px; 
+    margin-left:20px;
+}
+.delivery b{
+    font-size:18px;
+}
+.delivery p{
+    font-size:13px;
+     color:#666;
+    }
+.search{
+    flex:1;
+     max-width:550px; 
+     margin:0 20px;
+    background:#f8f8f8; 
+    border:1px solid #ddd;
+     border-radius:12px;
+    display:flex; 
+    align-items:center;
+     padding:12px 12px; 
+     gap:8px;
+}
+.search input{
+    border:none; 
+    background:transparent;
+     outline:none;
+      width:100%;
+       font-size:14px;
+    }
+.nav{
+    display:flex;
+     gap:20px; 
+     align-items:center; 
+     font-weight:600;
+    }
+.cart{
+    background:#0c831f; 
+    color:white;
+     padding:12px 18px;
+      border-radius:8px; 
+      display:flex; 
+      gap:6px;
+    }
+
+.banner{
+    margin:15px;
+     border-radius:12px;
+      overflow:hidden;
+    }
+.banner img{
+    width:100%;
+     height:220px; 
+     object-fit:cover;
+    }
+/* CATEGORY STRIP */
+.categories{
+    display:flex; 
+    gap:12px; 
+    overflow-x:auto; 
+    padding:10px 15px; 
+    background:white;
+}
+.cat{
+    flex:0 0 100px; 
+    text-align:center;
+}
+.cat img{
+    width:85px; 
+    height:85px; 
+    background:#f5f5f5;
+     border-radius:12px; 
+     padding:10px;
+    }
+.cat p{
+    font-size:12px; 
+    margin-top:6px;
+}
+/* PRODUCTS */
+.section{
+    padding:15px; 
+    background:white;
+     margin-top:10px;
+    }
+.section h3{
+    font-size:20px;
+     margin-bottom:15px;
+    }
+.products{
+    display:flex;
+     gap:12px; 
+     overflow-x:auto;
+    }
+.product{
+    flex:0 0 160px; 
+    background:white; 
+    border:1px solid #e8e8e8; 
+    border-radius:12px; 
+    padding:10px;
+}
+.product img{
+    width:100%; 
+    height:110px; 
+    object-fit:contain;
+}
+.product .time{
+    font-size:9px; 
+    background:#f8f8f8;
+     padding:3px 6px; 
+     border-radius:8px; 
+     display:inline-block; 
+     margin:6px 0;
+    }
+.product h4{
+    font-size:12px; 
+    height:32px; 
+    overflow:hidden;
+}
+.product .wt{
+    font-size:11px; 
+    color:gray;
+}
+.row{
+    display:flex; 
+    justify-content:space-between;
+     align-items:center;
+      margin-top:8px;
+    }
+.price{
+    font-weight:700;
+     font-size:13px;
+    }
+.add{
+    border:1px solid #0c831f; 
+    color:#0c831f;
+     padding:5px 16px; 
+     border-radius:8px;
+      font-weight:700;
+       background:white; 
+       cursor:pointer;
+    }
+.add:hover{
+    background:#0c831f;
+     color:white;
+     }
+</style>
+</head>
+<body>
+
+<header>
+    <div style="display:flex; align-items:center;">
+        <div class="logo">blinkit<span>bl</span></div>
+        <div class="delivery">
+            <b>Delivery in 8 minutes</b>
+            <p>Meerut, Uttar Pradesh, India ▼</p>
+        </div>
+    </div>
+
+    <div class="search">
+        <span>🔍</span>
+        <input id="searchInput" placeholder="Search 'milk' " onkeyup="searchProduct()">
+    </div>
+
+    <div class="nav">
+        <span>Login</span>
+        <div class="cart" onclick="showCart()">🛒 <span id="cartCount">0 Items</span></div>
+    </div>
+</header>
+
+<div class="banner">
+    <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=1200" alt="banner">
+</div>
+
+<div class="categories">
+    <div class="cat"><img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/app/images/category/cms_images/rc-upload-1708593507210-5"><p>Dairy</p></div>
+    <div class="cat"><img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/app/images/category/cms_images/rc-upload-1708593364793-2"><p>Vegetables</p></div>
+    <div class="cat"><img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/app/images/category/cms_images/rc-upload-1708593331122-7"><p>Snacks</p></div>
+    <div class="cat"><img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/app/images/category/cms_images/rc-upload-1708593420151-4"><p>Bakery</p></div>
+    <div class="cat"><img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/app/images/category/cms_images/rc-upload-1708593316268-8"><p>Fruits</p></div>
+    <div class="cat"><img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/app/images/category/cms_images/rc-upload-1708593387975-7"><p>Cold Drinks</p></div>
+</div>
+
+<div class="section">
+    <h3>Dairy, Bread & Eggs</h3>
+    <div class="products" id="productList">
+        <!-- Product JS will inject here -->
+    </div>
+</div>
+
+<script>
+// DATA - like real Blinkit products
+const items = [
+    {id:1, name:"Amul Toned Milk", wt:"500 ml", price:29, img:"https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/app/assets/products/sliding_images/jpeg/1c0dbcc1-6b7a-4a7b-8aed-11d1c5cf67a0.jpg", time:"8 MINS"},
+    {id:2, name:"Mother Dairy Curd", wt:"400 g", price:35, img:"https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/app/images/products/sliding_image/498753a.jpg", time:"8 MINS"},
+    {id:3, name:"White Bread", wt:"350 g", price:45, img:"https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/app/assets/products/sliding_images/jpeg/0be8d7a6-4d24-4529-b2b1-c0dd6f4b0452.jpg", time:"8 MINS"},
+    {id:4, name:"Farm Eggs - 6 pcs", wt:"6 pcs", price:52, img:"https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/app/assets/products/sliding_images/jpeg/3b0a9100-cfa0-46cc-89ee-4f8807d8b9b4.jpg", time:"8 MINS"},
+    {id:5, name:"Amul Butter", wt:"100 g", price:55, img:"https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/app/assets/products/sliding_images/jpeg/751018de-1dd3-4418-8dbe-d51d412b9574.jpg", time:"8 MINS"},
+    {id:6, name:"Lays Chips", wt:"52 g", price:20, img:"https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/app/images/products/sliding_image/391306a.jpg", time:"8 MINS"},
+];
+
+let cart = 0;
+function render(list){
+    const div = document.getElementById('productList');
+    div.innerHTML = "";
+    list.forEach(p=>{
+        div.innerHTML += `
+        <div class="product">
+            <img src="${p.img}">
+            <div class="time">⏱ ${p.time}</div>
+            <h4>${p.name}</h4>
+            <div class="wt">${p.wt}</div>
+            <div class="row">
+                <div class="price">₹${p.price}</div>
+                <button class="add" onclick="addToCart()">ADD</button>
+            </div>
+        </div>`;
+    });
+}
+function addToCart(){
+    cart++;
+    document.getElementById('cartCount').innerText = cart + " Items - ₹" + (cart*29);
+}
+function searchProduct(){
+    let q = document.getElementById('searchInput').value.toLowerCase();
+    let filtered = items.filter(i => i.name.toLowerCase().includes(q));
+    render(filtered);
+}
+function showCart(){ alert(cart + " items in cart"); }
+
+render(items);
+</script>
+</body>
+</html>
